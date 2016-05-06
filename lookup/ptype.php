@@ -26,13 +26,20 @@ try{
     $type = $number->carrier->type;
     $cname = $number->carrier->name;
     $error = $number->carrier->error_code;
+    
 
-    $result = array('type' => $type, 'carrier' => $cname);
+    $result = array('type' => $type, 'carrier' => $cname, 'error' => $error);
     header('Content-type: application/json');
     echo json_encode($result);
     
 } catch (Services_Twilio_RestException $e) {
-    echo $e->getMessage();
+     $e->getMessage();
+     $error = "invalid phone number";
+    
+    
+    $result = array('type' => $type, 'carrier' => $cname, 'error' => $error);
+    header('Content-type: application/json');
+    echo json_encode($result);
 }
 
 
