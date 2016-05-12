@@ -6,7 +6,15 @@ require '/var/www/html/services/lookup/twilio-php-master/Services/Twilio.php';
 //DATABASE CONNECTION
 
 //TOKEN + KEY 
-//
+function checkCreds($apiKey) {
+    if ($apiKey == 'RMG') {
+        $ret = "Pass";
+    }
+    else {
+        die('Invalid API Key');
+        $ret = "Fail";
+    }
+}
 
 //GET AND CLEAN/FORMAT the Phonenumeber
 $rawphone = $_REQUEST['phone'];
